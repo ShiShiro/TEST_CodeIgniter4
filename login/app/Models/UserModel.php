@@ -15,7 +15,7 @@ class UserModel extends Model{
 
 
     protected function beforeInsert(array $data){
-        $data = $this->passwordHash($data);
+        //$data = $this->passwordHash($data);
 
         return $data;
         
@@ -27,11 +27,14 @@ class UserModel extends Model{
         return $data;
     }
 
-        
-    protected function passwordHash(array $data){
-        if(isset($data['data']['password']))
-        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-      
+
+    protected function passwordHash(array $data)
+    {
+        if(isset($data['data']['password'])) {
+
+            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+
+        }
         return $data;
     }
 

@@ -5,21 +5,19 @@ use CodeIgniter\Model;
 
 class UserModel extends Model{
     protected $table = 'users';
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'updated_at'];
+    protected $primaryKey = 'id';
+
+
+    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'created_at', 'updated_at'];
     protected $beforeInsert = ['beforeInsert'];   
     protected $beforeUpdate = ['beforeUpdate'];
 
 
 
-
-
-
     protected function beforeInsert(array $data){
-        //$data = $this->passwordHash($data);
+        $data = $this->passwordHash($data);  
 
-        return $data;
-        
-        
+        return $data;   
     }
     protected function beforeUpdate(array $data){
         $data = $this->passwordHash($data);
@@ -40,9 +38,3 @@ class UserModel extends Model{
 
 
     }
-        
-      
-  
-
-
-

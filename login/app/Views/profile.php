@@ -4,7 +4,12 @@
    <div class="container">
    <h3><?= $user['firstname'].' '.$user['lastname'] ?></h3>
    <hr>
-   <form class="" action="/register" method="post">
+   <?php if(session() -> get('success')): ?>
+  <div class = "alert alert-success" role="alert">
+    <?= session()->get('success') ?>
+  </div>
+   <?php endif; ?>
+   <form class="" action="/profile" method="post">
     <div class="row">
     <div class="col-12 col-sm-6">
 
